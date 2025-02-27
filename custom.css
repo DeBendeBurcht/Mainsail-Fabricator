@@ -1,3 +1,11 @@
+/* Load the Lato font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap');
+
+/* Hide the "fabricator" text in the mobile element */
+span[data-v-1a6ff80c].text-h6.font-weight-regular.text-truncate {
+    display: none !important;
+}
+
 /* Hide the "fabricator" text in the sidebar (unchanged) */
 div[data-v-f14843f0].v-toolbar__title.text-no-wrap.ml-0.pl-2.mr-2 {
     display: none !important;
@@ -7,7 +15,7 @@ div[data-v-f14843f0].v-toolbar__title.text-no-wrap.ml-0.pl-2.mr-2 {
 img.nav-logo.ml-2.mr-1.d-none.d-sm-flex {
     position: relative !important;
     z-index: 1 !important;
-    padding: 8px !important; /* Increased padding for a larger backdrop */
+    padding: 4px !important; /* Increased padding for a larger backdrop */
     width: 120px !important; /* Slightly larger logo width to fit the backdrop */
     height: auto !important; /* Maintain aspect ratio of the logo */
     background-color: rgba(74, 122, 110, 0.4) !important; /* Light green from your theme (#4A7A6E with 40% opacity) */
@@ -65,7 +73,9 @@ img.nav-logo.ml-2.mr-1.d-none.d-sm-flex {
 :has(> .active-nav-item) { }
 
 :root {
+    --v-font-family: 'Lato', sans-serif; /* Default font for the application */
     --v-warning-base: #1A3C34;
+    font-family: 'Lato', sans-serif; /* Fallback for non-Vuetify elements */
 }
 
 /* Adjusted gradient for more distinct separation */
@@ -392,4 +402,18 @@ x-vue-echarts text {
     border-radius: 20px;
     padding: 0px 20px;
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+}
+
+/* Apply Lato to specific elements for consistency */
+.v-application, .v-btn, .v-list-item, .v-card {
+    font-family: 'Lato', sans-serif !important;
+}
+
+/* Optional: Define font weights for hierarchy */
+h1, h2, h3, .v-toolbar__title {
+    font-weight: 700; /* Bold for headings */
+}
+
+.v-list-item, .v-btn {
+    font-weight: 500; /* Medium for buttons and list items */
 }
