@@ -305,6 +305,71 @@ x-vue-echarts text {
     animation-duration: 1.75s !important;
 }
 
+/* Graph colors to match the theme (SVG paths) */
+path[stroke="#F44336"] {
+    stroke: #4A7A6E !important; /* Lighter teal for the extruder graph line */
+}
+
+path[stroke="#2196F3"] {
+    stroke: #22554B !important; /* Darker teal for the bed graph line */
+}
+
+/* Ensure fill colors (if any) match the strokes */
+path[fill="#F44336"], path[fill-opacity="0.1"][stroke="#F44336"] {
+    fill: #4A7A6E !important; /* Lighter teal for the extruder fill, with original opacity */
+}
+
+path[fill="#2196F3"], path[fill-opacity="0.1"][stroke="#2196F3"] {
+    fill: #22554B !important; /* Darker teal for the bed fill, with original opacity */
+}
+
+/* Update extruder and bed icons to match graph colors */
+.v-icon.extruder-icon {
+    color: #4A7A6E !important; /* Lighter teal for extruder icon */
+}
+
+.v-icon.bed-icon {
+    color: #22554B !important; /* Darker teal for bed icon */
+}
+
+/* Update table icons for Extruder and Heater Bed to match theme colors */
+tbody[data-v-d2cc2e04] tr:first-child button.v-icon {
+    color: #4A7A6E !important; /* Lighter teal for Extruder icon */
+    caret-color: #4A7A6E !important;
+}
+
+tbody[data-v-d2cc2e04] tr:last-child button.v-icon {
+    color: #22554B !important; /* Darker teal for Heater Bed icon */
+    caret-color: #22554B !important;
+}
+
+/* Style the warning button to make it more clickable in an off state */
+button.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--dark.v-size--small.warning {
+    background-color: #4A7A6E !important; /* Lighter teal for better visibility */
+    border: 1px solid rgba(74, 122, 110, 0.5) !important; /* Subtle border for contrast */
+    color: #E8F0EE !important; /* Off-white text for readability */
+    opacity: 0.7 !important; /* Slightly transparent for "off" state */
+    transition: opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Hover state for the button to enhance clickability */
+button.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--dark.v-size--small.warning:hover {
+    opacity: 1 !important; /* Full opacity on hover for interactivity */
+    background-color: #22554B !important; /* Darker teal on hover for contrast */
+    border-color: rgba(34, 85, 75, 0.7) !important; /* Slightly darker border on hover */
+}
+
+/* Ensure the icon inside the button matches the text color */
+button.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--dark.v-size--small.warning .v-icon__svg {
+    fill: #E8F0EE !important; /* Off-white for the icon to match text */
+}
+
+/* Active state for better feedback */
+button.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--dark.v-size--small.warning:active {
+    opacity: 0.9 !important; /* Slightly reduced opacity when clicked */
+    background-color: #1A3C34 !important; /* Darker green for active state */
+}
+
 .fluidd .v-expansion-panel {
     background-color: rgba(20, 50, 45, 0.35) !important;
     backdrop-filter: blur(12px);
