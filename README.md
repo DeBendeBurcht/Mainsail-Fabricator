@@ -3,7 +3,7 @@ This theme has been modified by me to elevate the interface of my Fabricator 3d 
 A Mainsail dark theme with Rich dark green accents and transparent glass like effects.
 Based on [acryl-fluidd-mainsail-theme by eliteSchwein](https://github.com/eliteSchwein/acryl-fluidd-mainsail-theme/tree/main) and animated background from [mainsail-theme-elegance by Turbine1991](https://github.com/Turbine1991/mainsail-theme-elegance).
 
-![Screenshot](./screenshot.jpg)
+![Screenshot](./screenshot.PNG)
 
 ## Installation
 1. Clone the `custom.css` from this repo:
