@@ -8,7 +8,7 @@ Based on [acryl-fluidd-mainsail-theme by eliteSchwein](https://github.com/eliteS
 ## Installation
 1. Clone the `custom.css` from this repo:
 ```bash
-git clone https://github.com/tui2019/Mainsail-Green-Acryl ~/printer_data/config/.theme
+git clone https://github.com/DeBendeBurcht/Mainsail-Fabricator ~/printer_data/config/.theme
 ```
 2. Go to ***Settings*** -> ***UI-Settings*** and set ***Logo*** color to `39, 174, 96` and ***Primary*** color to `208, 243, 204`.
 <br><br>
