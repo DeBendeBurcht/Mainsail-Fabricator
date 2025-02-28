@@ -34,6 +34,78 @@ img.nav-logo.ml-2.mr-1.d-none.d-sm-flex {
     100% { box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15), 0 0 8px rgba(74, 122, 110, 0.3); }
 }
 
+/* Custom scrollbar styling for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Slimmer scrollbar */
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* No background for floating effect */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(74, 122, 110, 0.3); /* Glassy teal */
+    border-radius: 10px; /* Rounded slider */
+    backdrop-filter: blur(8px); /* Glassy effect */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 85, 75, 0.5); /* Darker teal on hover */
+    backdrop-filter: blur(10px); /* Stronger blur on hover */
+    -webkit-backdrop-filter: blur(10px);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Fallback for Firefox */
+* {
+    scrollbar-width: thin; /* Slim scrollbar for Firefox */
+    scrollbar-color: rgba(74, 122, 110, 0.3) transparent; /* Glassy thumb, no track */
+}
+
+/* Fallback for Edge and other non-WebKit browsers */
+html {
+    --scrollbar-thumb: rgba(74, 122, 110, 0.3);
+    --scrollbar-thumb-hover: rgba(34, 85, 75, 0.5);
+    --scrollbar-track: transparent;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* Edge-specific fallback */
+    ::-ms-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 10px;
+    }
+    ::-ms-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+    }
+    ::-ms-scrollbar-track {
+        background: var(--scrollbar-track);
+    }
+}
+
+/* Enhanced button hover and active states (Suggestion 1) */
+.v-btn {
+    border-radius: 8px;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+.v-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important; /* Slightly brighter hover */
+    backdrop-filter: blur(6px); /* Add glass effect on hover */
+    -webkit-backdrop-filter: blur(6px);
+    transform: scale(1.05); /* Slight zoom for interactivity */
+}
+
+.v-btn:active {
+    transform: scale(0.98); /* Subtle press effect */
+}
+
 .v-main__wrap {
     height: 100% !important;
     background-image: 
@@ -51,15 +123,22 @@ img.nav-logo.ml-2.mr-1.d-none.d-sm-flex {
     border-right: 0px !important;
     border-radius: 100pt;
     background: #1A3C34; /* Keeping the rich dark green */
-    transition: 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for background and scale */
 }
 
 .active-nav-item:hover {
     background: rgba(34, 85, 75, 0.9); /* Slightly brighter green for hover distinction */
+    transform: scale(1.02); /* Slight scale on hover to match button effect */
 }
 
 .active-nav-item .menu-item-title, .active-nav-item .menu-item-icon {
     color: #E8F0EE; /* Off-white for better contrast against green */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.active-nav-item:hover .menu-item-title,
+.active-nav-item:hover .menu-item-icon {
+    color: #FFFFFF; /* Brighter white on hover for contrast */
 }
 
 .theme--dark.v-list-item--active::before {
@@ -78,13 +157,13 @@ img.nav-logo.ml-2.mr-1.d-none.d-sm-flex {
     font-family: 'Lato', sans-serif; /* Fallback for non-Vuetify elements */
 }
 
-/* Adjusted gradient for more distinct separation */
+/* Adjusted gradient for more distinct separation with slower animation (Suggestion 5) */
 main#content {
     background: linear-gradient(370deg, #1A3C34, #0A1F1B, #4A7A6E); /* Slightly darker base, more distinct accent */
     background-size: 400% 400%;
-    -webkit-animation: AnimationName 30s ease infinite;
-    -moz-animation: AnimationName 30s ease infinite;
-    animation: AnimationName 30s ease infinite;
+    -webkit-animation: AnimationName 60s ease infinite; /* Doubled duration for a calmer effect */
+    -moz-animation: AnimationName 60s ease infinite;
+    animation: AnimationName 60s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
@@ -103,11 +182,26 @@ main#content {
     100% { background-position: 0% 50%; }
 }
 
-/* Navigation drawer with better contrast */
+/* Navigation drawer with better contrast and smooth transition (Suggestion 3, adjusted) */
 .theme--dark.v-navigation-drawer:not(.v-navigation-drawer--temporary):not(.v-navigation-drawer--is-mobile) {
     background-color: rgba(26, 60, 52, 0.35); /* Slightly higher opacity for definition */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    overflow: hidden; /* Ensure rounded items aren't clipped */
+}
+
+.theme--dark.v-navigation-drawer .v-list-item {
+    border-radius: 100pt; /* Match the active-nav-item rounding */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for list items */
+}
+
+.theme--dark.v-navigation-drawer .v-list-item:hover {
+    background: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+    transform: scale(1.02); /* Slight scale to match active item */
+}
+
+.v-navigation-drawer--is-mobile {
+    transition: transform 0.3s ease; /* For mobile slide-in */
 }
 
 body {
@@ -253,6 +347,12 @@ body {
     stroke: rgba(255, 255, 255, 0.15) !important; /* Slightly more visible */
 }
 
+/* Enhanced loading spinner (Suggestion 6) */
+.v-progress-circular__overlay {
+    stroke: rgba(74, 122, 110, 0.8); /* Match theme color */
+    stroke-linecap: round; /* Rounded ends for a modern look */
+}
+
 .v-btn {
     border-radius: 8px;
 }
@@ -323,24 +423,40 @@ path[fill="#2196F3"], path[fill-opacity="0.1"][stroke="#2196F3"] {
     fill: #22554B !important; /* Darker teal for the bed fill, with original opacity */
 }
 
-/* Update extruder and bed icons to match graph colors */
+/* Update extruder and bed icons to match graph colors with animation (Suggestion 4) */
 .v-icon.extruder-icon {
     color: #4A7A6E !important; /* Lighter teal for extruder icon */
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .v-icon.bed-icon {
     color: #22554B !important; /* Darker teal for bed icon */
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Update table icons for Extruder and Heater Bed to match theme colors */
+.v-icon.extruder-icon:hover,
+.v-icon.bed-icon:hover {
+    transform: scale(1.1); /* Slight bounce */
+    opacity: 0.9; /* Subtle fade */
+}
+
+/* Update table icons for Extruder and Heater Bed to match theme colors with animation */
 tbody[data-v-d2cc2e04] tr:first-child button.v-icon {
     color: #4A7A6E !important; /* Lighter teal for Extruder icon */
     caret-color: #4A7A6E !important;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 tbody[data-v-d2cc2e04] tr:last-child button.v-icon {
     color: #22554B !important; /* Darker teal for Heater Bed icon */
     caret-color: #22554B !important;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+tbody[data-v-d2cc2e04] tr:first-child button.v-icon:hover,
+tbody[data-v-d2cc2e04] tr:last-child button.v-icon:hover {
+    transform: scale(1.1); /* Slight bounce */
+    opacity: 0.9; /* Subtle fade */
 }
 
 /* Style the warning button to make it more clickable in an off state */
@@ -481,4 +597,14 @@ h1, h2, h3, .v-toolbar__title {
 
 .v-list-item, .v-btn {
     font-weight: 500; /* Medium for buttons and list items */
+}
+
+/* Improve text readability with gradients (Suggestion 8) */
+.v-application .v-list-item__title,
+.v-application .v-card__title {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Subtle shadow for readability */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent); /* Faint gradient overlay */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: #E8F0EE !important; /* Ensure text color stands out */
 }
