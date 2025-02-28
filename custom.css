@@ -74,7 +74,7 @@ img.nav-logo.ml-2.mr-1.d-none.d-sm-flex {
 
 :root {
     --v-font-family: 'Lato', sans-serif; /* Default font for the application */
-    --v-warning-base: #1A3C34;
+    --v-warning-base: #F5F5F5;
     font-family: 'Lato', sans-serif; /* Fallback for non-Vuetify elements */
 }
 
